@@ -35,10 +35,13 @@ jobs:
         run: npm install --global vercel@latest
 
       - name: Pull Vercel environment information
+        working-directory: pixelchic-portfolio
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build project artifacts for Vercel
+        working-directory: pixelchic-portfolio
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy project artifacts to Vercel
+        working-directory: pixelchic-portfolio
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
